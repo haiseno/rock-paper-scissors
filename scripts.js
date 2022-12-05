@@ -25,7 +25,8 @@ function playRound(playerSelection, computerSelection) {
     //When both choices are the same
     //.toLowerCase() to make player choice case-insensitive
     if (playerSelection.toLowerCase() === computerSelection) {
-        return "It's a tie.";
+        console.log("It's a tie!");
+        return "tie";
     }
 
     //When player chooses "rock"
@@ -65,7 +66,54 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-//Create a function that plays a single game of rps (bo5)
-//Loop playRound function 5 times
-//Declare the winner of each round
-//Keep score and report a winner/loser at the end
+//Create a function that plays a single game of rps consisting of 5 rounds
+function game() {
+
+    //initialize counter variables to keep score
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieCount = 0;
+    //declare results variable to store each round's result
+    let roundResult;
+
+    //Create a loop for 5 rounds
+    for (let i = 0; i < 5; i++) {
+
+        //Prompt user for their choice
+        const playerSelection = prompt("Rock, Paper or Scissors?", "");
+
+        //Randomly generate computer's play
+        const computerSelection = getComputerChoice();
+        
+        console.log(`You chose: ${playerSelection}.\nComputer chose: ${computerSelection}.`);
+
+        //Play a single round of rps in each loop and store result in roundResult variable
+        roundResult = playRound(playerSelection, computerSelection);
+
+        //Checks the result of each round to keep score
+        if (roundResult === "win") {
+            playerScore++;
+        }
+        else if (roundResult === "lose") {
+            computerScore++;
+        }
+        else {
+            tieCount++;
+        }
+
+        //Display current score at the end of each round
+        console.log(`Score:\nPlayer: ${playerScore}\nComputer: ${computerScore}\nTies: ${tieCount}`);
+    }
+
+    //Compare scores at the end of the game to declare winner of the match
+    if (playerScore === computerScore) {
+        console.log("It's a tie! We will resume our glorious battle again another day!");
+    }
+    
+    if (playerScore > computerScore) {
+        console.log("Congratulations, you win! You're the best rock, paper, scissors player ever!");
+    }
+    else {
+        console.log("Computer wins. Defeat only means more opportunities for improvement.");
+    }
+}
