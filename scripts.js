@@ -20,7 +20,50 @@ function getComputerChoice() {
 
 //Create a function that plays a single round of rps
 //Take in parameters for player's choice and computer's choice
-//Returns a string that declares winner of round
+function playRound(playerSelection, computerSelection) {
+
+    //When both choices are the same
+    //.toLowerCase() to make player choice case-insensitive
+    if (playerSelection.toLowerCase() === computerSelection) {
+        return "It's a tie.";
+    }
+
+    //When player chooses "rock"
+    if (playerSelection.toLowerCase() === "rock") {
+        if (computerSelection === "scissors") {
+            console.log("You win! Rock beats scissors.");
+            return "win";
+        }
+        else if (computerSelection === "paper") {
+            console.log("You lose! Paper beats rock.");
+            return "lose";
+        }
+    }
+
+    //When player chooses "paper"
+    if (playerSelection.toLowerCase() === "paper") {
+        if (computerSelection === "rock") {
+            console.log("You win! Paper beats rock.");
+            return "win";
+        }
+        else if (computerSelection === "scissors") {
+            console.log("You lose! Scissors beat paper.");
+            return "lose";
+        }
+    }
+
+    //When player chooses "scissors"
+    if (playerSelection.toLowerCase() === "scissors") {
+        if (computerSelection === "paper") {
+            console.log("You win! Scissors beat paper.");
+            return "win";
+        }
+        else if (computerSelection === "rock") {
+            console.log("You lose! Rock beats scissors.");
+            return "lose";
+        }
+    }
+}
 
 //Create a function that plays a single game of rps (bo5)
 //Loop playRound function 5 times
