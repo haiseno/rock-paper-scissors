@@ -1,1 +1,3 @@
-# rock-paper-scissors
+The goal of this project is to create a Rock Paper Scissors game where the user plays a best out of 5 game versus a computer's randomly generated choices of rock, paper, or scissors. The program will keep score and declare a winner when one party reaches a score of 3 first.
+
+The purpose is to create and utilize Javascript functions that will accomplish this task. Initially, the program will be played entirely on the browser console.
