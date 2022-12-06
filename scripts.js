@@ -18,63 +18,92 @@ function getComputerChoice(e) {
     }
 }
 
+//Initialize counter variables to keep score
+let playerScore = 0;
+let computerScore = 0;
+let tieCount = 0;
+
 //Create a function that plays a single round of rps
-//Take in parameters for player's choice and computer's choice
 function playRound(e) {
-    
+
+    //Resets the score when the previous match ends (someone scores 5 points)
+    if (playerScore === 5 || computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        tieCount = 0;
+    }
+
     //Set playerSelection to which button was clicked
     const playerSelection = e.target.textContent;
 
     //Randomly generate computer's play
     const computerSelection = getComputerChoice();
 
+    //Displays player and computer's chosen plays
     const choices = document.querySelector("#choices");
     choices.textContent = `You chose: ${playerSelection}.\nComputer chose: ${computerSelection}.`;
 
-    
-    const div = document.querySelector("#results");
+    //Query selectors to grab onto divs that display results of each round and scorekeeping
+    const result = document.querySelector("#results");
+    const score = document.querySelector("#score");
 
-    //When both choices are the same
+    //When both choices are the same (tie)
     //.toLowerCase() to make player choice case-insensitive
     if (playerSelection.toLowerCase() === computerSelection) {
-        div.textContent = "It's a tie!";
-        return "tie";
+        result.textContent = "It's a tie!"; //Round result
+        score.textContent = `Player: ${playerScore}. Computer: ${computerScore}. Ties: ${++tieCount}`; //Scorekeeping
     }
 
     //When player chooses "rock"
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection === "scissors") {
-            div.textContent = "You win! Rock beats scissors.";
-            return "win";
+            result.textContent = "You win! Rock beats scissors.";
+            score.textContent = `Player: ${++playerScore}. Computer: ${computerScore} Ties: ${tieCount}`;
         }
         else if (computerSelection === "paper") {
-            div.textContent = "You lose! Paper beats rock.";
-            return "lose";
+            result.textContent = "You lose! Paper beats rock.";
+            score.textContent = `Player: ${playerScore}. Computer: ${++computerScore} Ties: ${tieCount}`;
         }
     }
 
     //When player chooses "paper"
     if (playerSelection.toLowerCase() === "paper") {
         if (computerSelection === "rock") {
-            div.textContent = "You win! Paper beats rock.";
-            return "win";
+            result.textContent = "You win! Paper beats rock.";
+            score.textContent = `Player: ${++playerScore}. Computer: ${computerScore} Ties: ${tieCount}`;
         }
         else if (computerSelection === "scissors") {
-            div.textContent = "You lose! Scissors beat paper.";
-            return "lose";
+            result.textContent = "You lose! Scissors beat paper.";
+            score.textContent = `Player: ${playerScore}. Computer: ${++computerScore} Ties: ${tieCount}`;
         }
     }
 
     //When player chooses "scissors"
     if (playerSelection.toLowerCase() === "scissors") {
         if (computerSelection === "paper") {
-            div.textContent = "You win! Scissors beat paper.";
-            return "win";
+            result.textContent = "You win! Scissors beat paper.";
+            score.textContent = `Player: ${++playerScore}. Computer: ${computerScore} Ties: ${tieCount}`;
         }
         else if (computerSelection === "rock") {
-            div.textContent = "You lose! Rock beats scissors.";
-            return "lose";
+            result.textContent = "You lose! Rock beats scissors.";
+            score.textContent = `Player: ${playerScore}. Computer: ${++computerScore} Ties: ${tieCount}`;
         }
+    }
+
+    //"Winner" div to display winner of the match
+    winner = document.querySelector("#winner");
+
+    //Clears out winner declaration message at the start of every round
+    if (playerScore < 5 || computerScore < 5) {
+        winner.textContent = "";
+    }
+
+    //Checks to see if there is a winner
+    if (playerScore == 5) {
+        winner.textContent = "Congratulations, you win! You're the best rock, paper, scissors player ever!";
+    }
+    else if (computerScore == 5) {
+        winner.textContent = "Computer wins. Defeat only means more opportunities for improvement."
     }
 }
 
