@@ -28,23 +28,27 @@ function playRound(e) {
     //Randomly generate computer's play
     const computerSelection = getComputerChoice();
 
-    console.log(`You chose: ${playerSelection}.\nComputer chose: ${computerSelection}.`);
+    const choices = document.querySelector("#choices");
+    choices.textContent = `You chose: ${playerSelection}.\nComputer chose: ${computerSelection}.`;
+
+    
+    const div = document.querySelector("#results");
 
     //When both choices are the same
     //.toLowerCase() to make player choice case-insensitive
     if (playerSelection.toLowerCase() === computerSelection) {
-        console.log("It's a tie!");
+        div.textContent = "It's a tie!";
         return "tie";
     }
 
     //When player chooses "rock"
     if (playerSelection.toLowerCase() === "rock") {
         if (computerSelection === "scissors") {
-            console.log("You win! Rock beats scissors.");
+            div.textContent = "You win! Rock beats scissors.";
             return "win";
         }
         else if (computerSelection === "paper") {
-            console.log("You lose! Paper beats rock.");
+            div.textContent = "You lose! Paper beats rock.";
             return "lose";
         }
     }
@@ -52,11 +56,11 @@ function playRound(e) {
     //When player chooses "paper"
     if (playerSelection.toLowerCase() === "paper") {
         if (computerSelection === "rock") {
-            console.log("You win! Paper beats rock.");
+            div.textContent = "You win! Paper beats rock.";
             return "win";
         }
         else if (computerSelection === "scissors") {
-            console.log("You lose! Scissors beat paper.");
+            div.textContent = "You lose! Scissors beat paper.";
             return "lose";
         }
     }
@@ -64,11 +68,11 @@ function playRound(e) {
     //When player chooses "scissors"
     if (playerSelection.toLowerCase() === "scissors") {
         if (computerSelection === "paper") {
-            console.log("You win! Scissors beat paper.");
+            div.textContent = "You win! Scissors beat paper.";
             return "win";
         }
         else if (computerSelection === "rock") {
-            console.log("You lose! Rock beats scissors.");
+            div.textContent = "You lose! Rock beats scissors.";
             return "lose";
         }
     }
