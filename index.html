@@ -3,16 +3,35 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="styles.css">
         <script src="scripts.js" defer></script>
     </head>
 
     <body>
-        <div id="choices"></div>
-        <div id="results"></div>
-        <div id="score"></div>
-        <div id="winner"></div>
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <div class="container">
+        
+            <div id="results"></div>
+            <div id="score"></div>
+            <div class="versus-container">
+                <div>
+                    <div id="computer-choice"></div>
+                    <div class="player-div">
+                        <img src="images/computer.png" class="players" alt="robot using a computer">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="button" id="rock"><img src="images/rock.png" alt="irasutoya drawing of hand for rock"></button>
+                    <button type="button" id="paper"><img src="images/paper.png" alt="irasutoya drawing of hand for paper"></button>
+                    <button type="button" id="scissors"><img src="images/scissors.png" alt="irasutoya drawing of hand for scissors"></button>
+                </div>
+                <div>
+                    <div id="player-choice"></div>
+                    <div class="player-div">
+                        <img src="images/player.png" class="players" id="player" alt="man on computer in the dark">
+                    </div>
+                </div>
+            </div>
+            <div id="winner"></div>
+        </div>
     </body>
 </html>

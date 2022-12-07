@@ -34,14 +34,18 @@ function playRound(e) {
     }
 
     //Set playerSelection to which button was clicked
-    const playerSelection = e.target.textContent;
+    const playerSelection = e.currentTarget.id;
 
     //Randomly generate computer's play
     const computerSelection = getComputerChoice();
 
     //Displays player and computer's chosen plays
-    const choices = document.querySelector("#choices");
-    choices.textContent = `You chose: ${playerSelection}.\nComputer chose: ${computerSelection}.`;
+    const playerChoice = document.querySelector("#player-choice");
+    const computerChoice = document.querySelector("#computer-choice");
+    
+
+    playerChoice.textContent = `You chose: ${playerSelection}`;
+    computerChoice.textContent = `Computer chose: ${computerSelection}`;
 
     //Query selectors to grab onto divs that display results of each round and scorekeeping
     const result = document.querySelector("#results");
@@ -49,13 +53,13 @@ function playRound(e) {
 
     //When both choices are the same (tie)
     //.toLowerCase() to make player choice case-insensitive
-    if (playerSelection.toLowerCase() === computerSelection) {
+    if (playerSelection === computerSelection) {
         result.textContent = "It's a tie!"; //Round result
         score.textContent = `Player: ${playerScore}. Computer: ${computerScore}. Ties: ${++tieCount}`; //Scorekeeping
     }
 
     //When player chooses "rock"
-    if (playerSelection.toLowerCase() === "rock") {
+    if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
             result.textContent = "You win! Rock beats scissors.";
             score.textContent = `Player: ${++playerScore}. Computer: ${computerScore} Ties: ${tieCount}`;
@@ -67,7 +71,7 @@ function playRound(e) {
     }
 
     //When player chooses "paper"
-    if (playerSelection.toLowerCase() === "paper") {
+    if (playerSelection === "paper") {
         if (computerSelection === "rock") {
             result.textContent = "You win! Paper beats rock.";
             score.textContent = `Player: ${++playerScore}. Computer: ${computerScore} Ties: ${tieCount}`;
@@ -79,7 +83,7 @@ function playRound(e) {
     }
 
     //When player chooses "scissors"
-    if (playerSelection.toLowerCase() === "scissors") {
+    if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
             result.textContent = "You win! Scissors beat paper.";
             score.textContent = `Player: ${++playerScore}. Computer: ${computerScore} Ties: ${tieCount}`;
