@@ -75,7 +75,6 @@ img {
     border: 6px solid cyan;
     border-radius: 12px;
     margin: 0 10px;
-    overflow-y: auto;
     line-height: 1.5;
 }
 

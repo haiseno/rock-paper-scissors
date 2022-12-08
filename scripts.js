@@ -37,6 +37,8 @@ function playRound(e) {
     const computerChoice = document.querySelector(".computer-history");
     playerChoice.innerHTML += "<br>" + `${playerSelection.toUpperCase()}`;
     computerChoice.innerHTML += "<br>" + `${computerSelection.toUpperCase()}`;
+    playerChoice.scrollTop = playerChoice.scrollHeight;
+    computerChoice.scrollTop = computerChoice.scrollHeight;
 
     //Scorekeeping
     const playerPoints = document.querySelector(".player-points");
@@ -57,7 +59,6 @@ function playRound(e) {
     const result = document.querySelector(".round-results");
 
     //When both choices are the same (tie)
-    //.toLowerCase() to make player choice case-insensitive
     if (playerSelection === computerSelection) {
         result.textContent = "It's a tie!";
         tiePoints.textContent = `Ties: ${++tieCount}`
@@ -121,3 +122,7 @@ const buttons = document.querySelectorAll("button");
 //Loop through buttons nodelist and add an event listener to each individual button
 //On click event, callback playRound function
 buttons.forEach(button => button.addEventListener("click", playRound));
+buttons.forEach(button => button.addEventListener("click", () => {
+    playerChoice.scrollIntoView();
+    computerChoice.scrollIntoView();
+}));
