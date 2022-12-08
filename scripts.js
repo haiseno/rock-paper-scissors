@@ -1,5 +1,5 @@
 //Create a function for the computer's play that randomly returns a choice of "Rock", "Paper" or "Scissors"
-function getcomputerHistory(e) {
+function getcomputerChoice() {
 
     //Randomly choose a number between 0-2 (0, 1, 2)
     const ranNum = Math.floor(Math.random() * 3);
@@ -40,7 +40,7 @@ function playRound(e) {
     const playerSelection = e.currentTarget.id;
 
     //Randomly generate computer's play
-    const computerSelection = getcomputerHistory();
+    const computerSelection = getcomputerChoice();
 
     //Checks to see if match ends and resets the game
     if (pScore === 5 || cScore === 5) {
