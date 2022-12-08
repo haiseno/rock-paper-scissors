@@ -4,19 +4,25 @@
     overflow: hidden;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background: url("https://1.bp.blogspot.com/-kEN6jNUhdYU/TyfhMq-pYSI/AAAAAAAAD8Y/L12Po8LEo5Y/s1600/body_background.jpg");
+}
+
 .container {
-    height: 100vh;
-    min-width: auto;
+    min-height: 100vh;
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
+h1 {
+    text-transform: uppercase;
+    margin-bottom: 100px;
+    font-size: 64px;
 }
 
 .versus-container {
@@ -24,6 +30,12 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.player,
+.buttons,
+.computer {
+    display: flex;
 }
 
 button {
@@ -37,25 +49,41 @@ button {
     border-radius: 12px;
 }
 
-.buttons img {
-    height: 50%;
-    width: auto;
-}
-
-.players {
+img {
     height: 80%;
     width: auto;
 }
 
-#player {
+.computer img {
     transform: scaleX(-1);
 }
 
-.player-div {
+.card-container {
+    height: 300px;
+    width: 300px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    height: 350px;
-    width: 350px;
-    border: 3px solid cyan;
+    border: 6px solid cyan;
+    border-radius: 12px;
+}
+
+.history {
+    height: 300px;
+    width: 150px;
+    border: 6px solid cyan;
+    border-radius: 12px;
+    margin: 0 10px;
+    overflow-y: auto;
+    line-height: 1.5;
+}
+
+.round-results,
+.choices,
+.points,
+.ties,
+.winner {
+    font-size: 32px;
+    margin: 15px;
 }

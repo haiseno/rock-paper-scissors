@@ -9,29 +9,40 @@
 
     <body>
         <div class="container">
-        
-            <div id="results"></div>
-            <div id="score"></div>
+
+            <h1>Rock, Paper, Scissors!</h1>
+
+            <div class="round-results">Choose your move...</div>
+
             <div class="versus-container">
-                <div>
-                    <div id="computer-choice"></div>
-                    <div class="player-div">
-                        <img src="images/computer.png" class="players" alt="robot using a computer">
+
+                <div class="player">
+                    <div class="card-container">
+                        <img src="images/player.png" alt="man on computer in the dark">
+                        <p class="player-points points">0</p>
                     </div>
+                    <p class="player-history history">You</p>
                 </div>
+
                 <div class="buttons">
                     <button type="button" id="rock"><img src="images/rock.png" alt="irasutoya drawing of hand for rock"></button>
                     <button type="button" id="paper"><img src="images/paper.png" alt="irasutoya drawing of hand for paper"></button>
                     <button type="button" id="scissors"><img src="images/scissors.png" alt="irasutoya drawing of hand for scissors"></button>
                 </div>
-                <div>
-                    <div id="player-choice"></div>
-                    <div class="player-div">
-                        <img src="images/player.png" class="players" id="player" alt="man on computer in the dark">
+
+                <div class="computer">
+                    <p class="computer-history history">Computer</p>
+                    <div class="card-container">
+                        <img src="images/computer.png" alt="robot using a computer">
+                        <p class="computer-points points">0</p>
                     </div>
                 </div>
+
             </div>
-            <div id="winner"></div>
+
+            <p class="ties">Ties: 0</p> 
+            <p class="winner"></p>
+
         </div>
     </body>
 </html>
