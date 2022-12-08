@@ -96,3 +96,8 @@ img {
 .scroll::-webkit-scrollbar{
     display: none;
 }
+
+.winner-display {
+    height: 100px;
+    width: auto;
+}
