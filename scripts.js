@@ -1,19 +1,3 @@
-function playAgain() {
-    const resetPlayerHistory = document.querySelector(".player-history");
-    const resetComputerHistory = document.querySelector(".computer-history"); 
-    const resetResult = document.querySelector(".round-results");
-    const resetPlayerScore = document.querySelector(".player-points");
-    const resetComputerScore = document.querySelector(".computer-points");
-    const resetTies = document.querySelector(".ties");
-
-    resetPlayerHistory.innerHTML += "<br>" + `${playerSelection}`;
-    resetComputerHistory.innerHTML += "<br>" + `${computerSelection}`;
-    resetResult.innerHTML = "Choose your move..."
-    resetPlayerScore.innerHTML = "0";
-    resetComputerScore.innerHTML = "0"
-    resetTies.innerHTML = "0"
-}
-
 //Create a function for the computer's play that randomly returns a choice of "Rock", "Paper" or "Scissors"
 function getComputerChoice(e) {
 
