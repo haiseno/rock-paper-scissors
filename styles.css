@@ -79,10 +79,14 @@ img {
 }
 
 .round-results,
-.choices,
 .score,
 .ties,
 .winner {
     font-size: 32px;
     margin: 15px;
+}
+
+.player-history,
+.computer-history {
+    overflow-y: auto;
 }

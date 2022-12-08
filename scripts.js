@@ -54,9 +54,14 @@ function playRound(e) {
         computerHistory.innerHTML = "";
     }
 
-    //Displays player and computer's play history
-    playerHistory.innerHTML += "<br>" + `${playerSelection.toUpperCase()}`;
-    computerHistory.innerHTML += "<br>" + `${computerSelection.toUpperCase()}`;
+    //Displays player and computer's play history by creating and appending new divs
+    const player = document.createElement("p");
+    const computer = document.createElement("p");
+    player.textContent = `${playerSelection.toUpperCase()}`;
+    computer.textContent = `${computerSelection.toUpperCase()}`;
+    playerHistory.appendChild(player);
+    computerHistory.appendChild(computer);
+       
     playerHistory.scrollTop = playerHistory.scrollHeight;
     computerHistory.scrollTop = computerHistory.scrollHeight;
 
