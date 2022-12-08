@@ -1,5 +1,5 @@
 //Create a function for the computer's play that randomly returns a choice of "Rock", "Paper" or "Scissors"
-function getComputerChoice(e) {
+function getcomputerHistory(e) {
 
     //Randomly choose a number between 0-2 (0, 1, 2)
     const ranNum = Math.floor(Math.random() * 3);
@@ -19,9 +19,19 @@ function getComputerChoice(e) {
 }
 
 //Initialize counter variables to keep score
-let playerScore = 0;
-let computerScore = 0;
+let pScore = 0;
+let cScore = 0;
 let tieCount = 0;
+
+//Scorekeeping
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
+const tiePoints = document.querySelector(".ties");
+const playerHistory = document.querySelector(".player-history");
+const computerHistory = document.querySelector(".computer-history");
+
+//To display results
+const result = document.querySelector(".round-results");
 
 //Create a function that plays a single round of rps
 function playRound(e) {
@@ -30,33 +40,25 @@ function playRound(e) {
     const playerSelection = e.currentTarget.id;
 
     //Randomly generate computer's play
-    const computerSelection = getComputerChoice();
+    const computerSelection = getcomputerHistory();
 
-    //Displays player and computer's plays
-    const playerChoice = document.querySelector(".player-history");
-    const computerChoice = document.querySelector(".computer-history");
-    playerChoice.innerHTML += "<br>" + `${playerSelection.toUpperCase()}`;
-    computerChoice.innerHTML += "<br>" + `${computerSelection.toUpperCase()}`;
-    playerChoice.scrollTop = playerChoice.scrollHeight;
-    computerChoice.scrollTop = computerChoice.scrollHeight;
-
-    //Scorekeeping
-    const playerPoints = document.querySelector(".player-points");
-    const computerPoints = document.querySelector(".computer-points");
-    const tiePoints = document.querySelector(".ties");
-
-    //Resets the score when the previous match ends (someone scores 5 points)
-    if (playerScore === 5 || computerScore === 5) {
-        playerScore = 0;
-        computerScore = 0;
+    //Checks to see if match ends and resets the game
+    if (pScore === 5 || cScore === 5) {
+        pScore = 0;
+        cScore = 0;
         tieCount = 0;
-        playerPoints.textContent = `${playerScore}`;
+        playerScore.textContent = `${pScore}`;
         tiePoints.textContent = `Ties: ${tieCount}`
-        computerPoints.textContent = `${computerScore}`;
+        computerScore.textContent = `${cScore}`;
+        playerHistory.innerHTML = "";
+        computerHistory.innerHTML = "";
     }
 
-    //Query selectors to grab onto divs that display results of each round and scorekeeping
-    const result = document.querySelector(".round-results");
+    //Displays player and computer's play history
+    playerHistory.innerHTML += "<br>" + `${playerSelection.toUpperCase()}`;
+    computerHistory.innerHTML += "<br>" + `${computerSelection.toUpperCase()}`;
+    playerHistory.scrollTop = playerHistory.scrollHeight;
+    computerHistory.scrollTop = computerHistory.scrollHeight;
 
     //When both choices are the same (tie)
     if (playerSelection === computerSelection) {
@@ -68,11 +70,11 @@ function playRound(e) {
     if (playerSelection === "rock") {
         if (computerSelection === "scissors") {
             result.textContent = "You win! Rock beats scissors.";
-            playerPoints.textContent = `${++playerScore}`; //Scorekeeping for player wins
+            playerScore.textContent = `${++pScore}`; //Scorekeeping for player wins
         }
         else if (computerSelection === "paper") {
             result.textContent = "You lose! Paper beats rock.";
-            computerPoints.textContent = `${++computerScore}`; //Scorekeeping for computer wins
+            computerScore.textContent = `${++cScore}`; //Scorekeeping for computer wins
         }
     }
 
@@ -80,11 +82,11 @@ function playRound(e) {
     if (playerSelection === "paper") {
         if (computerSelection === "rock") {
             result.textContent = "You win! Paper beats rock.";
-            playerPoints.textContent = `${++playerScore}`;
+            playerScore.textContent = `${++pScore}`;
         }
         else if (computerSelection === "scissors") {
             result.textContent = "You lose! Scissors beat paper.";
-            computerPoints.textContent = `${++computerScore}`;
+            computerScore.textContent = `${++cScore}`;
         }
     }
 
@@ -92,11 +94,11 @@ function playRound(e) {
     if (playerSelection === "scissors") {
         if (computerSelection === "paper") {
             result.textContent = "You win! Scissors beat paper.";
-            playerPoints.textContent = `${++playerScore}`;
+            playerScore.textContent = `${++pScore}`;
         }
         else if (computerSelection === "rock") {
             result.textContent = "You lose! Rock beats scissors.";
-            computerPoints.textContent = `${++computerScore}`;
+            computerScore.textContent = `${++cScore}`;
         }
     }
 
@@ -105,10 +107,10 @@ function playRound(e) {
 
     //Checks to see if there is a winner
     //Clears out winner declaration message at the start of every round
-    if (playerScore == 5) {
+    if (pScore == 5) {
         winner.textContent = "Congratulations, you win! You're the best rock, paper, scissors player ever!";
     }
-    else if (computerScore == 5) {
+    else if (cScore == 5) {
         winner.textContent = "Computer wins. Defeat only means more opportunities for improvement."
     }
     else {
@@ -122,7 +124,3 @@ const buttons = document.querySelectorAll("button");
 //Loop through buttons nodelist and add an event listener to each individual button
 //On click event, callback playRound function
 buttons.forEach(button => button.addEventListener("click", playRound));
-buttons.forEach(button => button.addEventListener("click", () => {
-    playerChoice.scrollIntoView();
-    computerChoice.scrollIntoView();
-}));
