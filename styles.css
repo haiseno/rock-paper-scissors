@@ -88,5 +88,11 @@ img {
 
 .player-history,
 .computer-history {
+    height: 280px;
     overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.scroll::-webkit-scrollbar{
+    display: none;
 }

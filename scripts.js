@@ -61,7 +61,7 @@ function playRound(e) {
     computer.textContent = `${computerSelection.toUpperCase()}`;
     playerHistory.appendChild(player);
     computerHistory.appendChild(computer);
-       
+    //Scroll into view as moves update beyond container
     playerHistory.scrollTop = playerHistory.scrollHeight;
     computerHistory.scrollTop = computerHistory.scrollHeight;
 
